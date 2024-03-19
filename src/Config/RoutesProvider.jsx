@@ -1,6 +1,7 @@
 import { Suspense, lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Layout from "../Layout";
+import DefaultTheme from "../Layout/DefaultTheme";
+import LoadingTheme from "../Layout/LoadingTheme";
 
 const Home = lazy(() => import("../Pages/Home"));
 const Document = lazy(() => import("../Pages/Document"));
@@ -9,9 +10,9 @@ const Document = lazy(() => import("../Pages/Document"));
 const RoutesProvider = () => {
   return (
     <BrowserRouter>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<LoadingTheme />}>
         <Routes>
-          <Route element={<Layout />}>
+          <Route element={<DefaultTheme />}>
             <Route path="/" element={<Home />} />
             <Route path="/document" element={<Document />} />
           </Route>
